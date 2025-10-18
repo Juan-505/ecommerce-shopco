@@ -15,13 +15,7 @@ const PriceSection = () => {
           Price
         </AccordionTrigger>
         <AccordionContent className="pt-4" contentClassName="overflow-visible">
-          <Slider
-            defaultValue={[50, 200]}
-            min={0}
-            max={250}
-            step={1}
-            label="$"
-          />
+          <Slider defaultValue={[50, 200]} min={0} max={250} step={1} label="$" />
           <div className="mb-3" />
         </AccordionContent>
       </AccordionItem>

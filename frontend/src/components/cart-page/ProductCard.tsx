@@ -1,16 +1,11 @@
 "use client";
 
-import CartCounter from "@/components/ui/CartCounter";
-import {
-  addToCart,
-  CartItem,
-  remove,
-  removeCartItem,
-} from "@/lib/features/carts/cartsSlice";
-import { useAppDispatch } from "@/lib/hooks/redux";
 import Image from "next/image";
 import Link from "next/link";
 import { PiTrashFill } from "react-icons/pi";
+import CartCounter from "@/components/ui/CartCounter";
+import { addToCart, type CartItem, remove, removeCartItem } from "@/lib/features/carts/cartsSlice";
+import { useAppDispatch } from "@/lib/hooks/redux";
 import { Button } from "../ui/button";
 
 type ProductCardProps = {
@@ -53,7 +48,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
                   id: data.id,
                   attributes: data.attributes,
                   quantity: data.quantity,
-                })
+                }),
               )
             }
           >
@@ -62,32 +57,24 @@ const ProductCard = ({ data }: ProductCardProps) => {
         </div>
         <div className="-mt-1">
           <span className="text-black text-xs md:text-sm mr-1">Size:</span>
-          <span className="text-black/60 text-xs md:text-sm">
-            {data.attributes[0]}
-          </span>
+          <span className="text-black/60 text-xs md:text-sm">{data.attributes[0]}</span>
         </div>
         <div className="mb-auto -mt-1.5">
           <span className="text-black text-xs md:text-sm mr-1">Color:</span>
-          <span className="text-black/60 text-xs md:text-sm">
-            {data.attributes[1]}
-          </span>
+          <span className="text-black/60 text-xs md:text-sm">{data.attributes[1]}</span>
         </div>
         <div className="flex items-center flex-wrap justify-between">
           <div className="flex items-center space-x-[5px] xl:space-x-2.5">
             {data.discount.percentage > 0 ? (
               <span className="font-bold text-black text-xl xl:text-2xl">
-                {`$${Math.round(
-                  data.price - (data.price * data.discount.percentage) / 100
-                )}`}
+                {`$${Math.round(data.price - (data.price * data.discount.percentage) / 100)}`}
               </span>
             ) : data.discount.amount > 0 ? (
               <span className="font-bold text-black text-xl xl:text-2xl">
                 {`$${data.price - data.discount.amount}`}
               </span>
             ) : (
-              <span className="font-bold text-black text-xl xl:text-2xl">
-                ${data.price}
-              </span>
+              <span className="font-bold text-black text-xl xl:text-2xl">${data.price}</span>
             )}
             {data.discount.percentage > 0 && (
               <span className="font-bold text-black/40 line-through text-xl xl:text-2xl">
@@ -121,11 +108,9 @@ const ProductCard = ({ data }: ProductCardProps) => {
                       id: data.id,
                       attributes: data.attributes,
                       quantity: data.quantity,
-                    })
+                    }),
                   )
-                : dispatch(
-                    removeCartItem({ id: data.id, attributes: data.attributes })
-                  )
+                : dispatch(removeCartItem({ id: data.id, attributes: data.attributes }))
             }
             isZeroDelete
             className="px-5 py-3 max-h-8 md:max-h-10 min-w-[105px] max-w-[105px] sm:max-w-32"

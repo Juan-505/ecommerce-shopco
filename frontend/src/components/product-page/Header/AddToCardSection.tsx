@@ -1,9 +1,9 @@
 "use client";
 
-import CartCounter from "@/components/ui/CartCounter";
 import React, { useState } from "react";
+import CartCounter from "@/components/ui/CartCounter";
+import type { Product } from "@/types/product.types";
 import AddToCartBtn from "./AddToCartBtn";
-import { Product } from "@/types/product.types";
 
 const AddToCardSection = ({ data }: { data: Product }) => {
   const [quantity, setQuantity] = useState<number>(1);

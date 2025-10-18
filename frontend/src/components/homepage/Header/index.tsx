@@ -1,11 +1,11 @@
+import * as motion from "framer-motion/client";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import * as motion from "framer-motion/client";
 
 const Header = () => {
   return (
@@ -31,9 +31,8 @@ const Header = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-black/60 text-sm lg:text-base mb-6 lg:mb-8 max-w-[545px]"
           >
-            Browse through our diverse range of meticulously crafted garments,
-            designed to bring out your individuality and cater to your sense of
-            style.
+            Browse through our diverse range of meticulously crafted garments, designed to bring out
+            your individuality and cater to your sense of style.
           </motion.p>
           <motion.div
             initial={{ y: "100px", opacity: 0 }}
@@ -63,10 +62,7 @@ const Header = () => {
                 International Brands
               </span>
             </div>
-            <Separator
-              className="ml-6 md:ml-0 h-12 md:h-full bg-black/10"
-              orientation="vertical"
-            />
+            <Separator className="ml-6 md:ml-0 h-12 md:h-full bg-black/10" orientation="vertical" />
             <div className="flex flex-col ml-6 md:ml-0">
               <span className="font-bold text-2xl md:text-xl lg:text-3xl xl:text-[40px] xl:mb-2">
                 <AnimatedCounter from={0} to={2000} />+

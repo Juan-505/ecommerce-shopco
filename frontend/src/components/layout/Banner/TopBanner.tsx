@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const TopBanner = () => {
   return (
@@ -20,13 +20,7 @@ const TopBanner = () => {
           type="button"
           aria-label="close banner"
         >
-          <Image
-            priority
-            src="/icons/times.svg"
-            height={13}
-            width={13}
-            alt="close banner"
-          />
+          <Image priority src="/icons/times.svg" height={13} width={13} alt="close banner" />
         </Button>
       </div>
     </div>

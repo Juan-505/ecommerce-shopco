@@ -1,12 +1,12 @@
 import React from "react";
-import PhotoSection from "./PhotoSection";
-import { Product } from "@/types/product.types";
-import { integralCF } from "@/styles/fonts";
-import { cn } from "@/lib/utils";
 import Rating from "@/components/ui/Rating";
-import ColorSelection from "./ColorSelection";
-import SizeSelection from "./SizeSelection";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
+import type { Product } from "@/types/product.types";
 import AddToCardSection from "./AddToCardSection";
+import ColorSelection from "./ColorSelection";
+import PhotoSection from "./PhotoSection";
+import SizeSelection from "./SizeSelection";
 
 const Header = ({ data }: { data: Product }) => {
   return (
@@ -41,18 +41,14 @@ const Header = ({ data }: { data: Product }) => {
           <div className="flex items-center space-x-2.5 sm:space-x-3 mb-5">
             {data.discount.percentage > 0 ? (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
-                {`$${Math.round(
-                  data.price - (data.price * data.discount.percentage) / 100
-                )}`}
+                {`$${Math.round(data.price - (data.price * data.discount.percentage) / 100)}`}
               </span>
             ) : data.discount.amount > 0 ? (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
                 {`$${data.price - data.discount.amount}`}
               </span>
             ) : (
-              <span className="font-bold text-black text-2xl sm:text-[32px]">
-                ${data.price}
-              </span>
+              <span className="font-bold text-black text-2xl sm:text-[32px]">${data.price}</span>
             )}
             {data.discount.percentage > 0 && (
               <span className="font-bold text-black/40 line-through text-2xl sm:text-[32px]">
@@ -77,8 +73,8 @@ const Header = ({ data }: { data: Product }) => {
             )}
           </div>
           <p className="text-sm sm:text-base text-black/60 mb-5">
-            This graphic t-shirt which is perfect for any occasion. Crafted from
-            a soft and breathable fabric, it offers superior comfort and style.
+            This graphic t-shirt which is perfect for any occasion. Crafted from a soft and
+            breathable fabric, it offers superior comfort and style.
           </p>
           <hr className="h-[1px] border-t-black/10 mb-5" />
           <ColorSelection />

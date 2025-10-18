@@ -1,11 +1,11 @@
 "use client";
 
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import FaqContent from "./FaqContent";
 import ProductDetailsContent from "./ProductDetailsContent";
 import ReviewsContent from "./ReviewsContent";
-import FaqContent from "./FaqContent";
 
 type TabBtn = {
   id: number;

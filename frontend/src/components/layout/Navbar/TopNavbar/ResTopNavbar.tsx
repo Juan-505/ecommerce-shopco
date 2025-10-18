@@ -1,4 +1,12 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   Sheet,
   SheetClose,
@@ -7,17 +15,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
-import { NavMenu } from "../navbar.types";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import type { NavMenu } from "../navbar.types";
 
 const ResTopNavbar = ({ data }: { data: NavMenu }) => {
   return (
@@ -61,14 +61,8 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
                       </AccordionTrigger>
                       <AccordionContent className="p-4 pb-0 border-l flex flex-col">
                         {item.children.map((itemChild, idx) => (
-                          <SheetClose
-                            key={itemChild.id}
-                            asChild
-                            className="w-fit py-2 text-base"
-                          >
-                            <Link href={itemChild.url ?? "/"}>
-                              {itemChild.label}
-                            </Link>
+                          <SheetClose key={itemChild.id} asChild className="w-fit py-2 text-base">
+                            <Link href={itemChild.url ?? "/"}>{itemChild.label}</Link>
                           </SheetClose>
                         ))}
                       </AccordionContent>

@@ -1,10 +1,10 @@
-import React from "react";
-import Rating from "../ui/Rating";
-import { IoEllipsisHorizontal } from "react-icons/io5";
-import { Button } from "../ui/button";
+import type React from "react";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { Review } from "@/types/review.types";
+import { IoEllipsisHorizontal } from "react-icons/io5";
 import { cn } from "@/lib/utils";
+import type { Review } from "@/types/review.types";
+import { Button } from "../ui/button";
+import Rating from "../ui/Rating";
 
 type ReviewCardProps = {
   blurChild?: React.ReactNode;
@@ -49,9 +49,7 @@ const ReviewCard = ({
       </div>
       <p className="text-sm sm:text-base text-black/60">{data.content}</p>
       {isDate && (
-        <p className="text-black/60 text-sm font-medium mt-4 sm:mt-6">
-          Posted on {data.date}
-        </p>
+        <p className="text-black/60 text-sm font-medium mt-4 sm:mt-6">Posted on {data.date}</p>
       )}
     </div>
   );

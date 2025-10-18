@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { IoMdCheckmark } from "react-icons/io";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { IoMdCheckmark } from "react-icons/io";
 import { cn } from "@/lib/utils";
 
 const ColorsSection = () => {
@@ -42,9 +42,7 @@ const ColorsSection = () => {
                 ])}
                 onClick={() => setSelected(color)}
               >
-                {selected === color && (
-                  <IoMdCheckmark className="text-base text-white" />
-                )}
+                {selected === color && <IoMdCheckmark className="text-base text-white" />}
               </button>
             ))}
           </div>

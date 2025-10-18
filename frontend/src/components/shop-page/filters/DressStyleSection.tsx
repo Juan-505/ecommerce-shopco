@@ -1,12 +1,12 @@
+import Link from "next/link";
 import React from "react";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from "next/link";
-import { MdKeyboardArrowRight } from "react-icons/md";
 
 type DressStyle = {
   title: string;
@@ -42,11 +42,7 @@ const DressStyleSection = () => {
         <AccordionContent className="pt-4 pb-0">
           <div className="flex flex-col text-black/60 space-y-0.5">
             {dressStylesData.map((dStyle, idx) => (
-              <Link
-                key={idx}
-                href={dStyle.slug}
-                className="flex items-center justify-between py-2"
-              >
+              <Link key={idx} href={dStyle.slug} className="flex items-center justify-between py-2">
                 {dStyle.title} <MdKeyboardArrowRight />
               </Link>
             ))}

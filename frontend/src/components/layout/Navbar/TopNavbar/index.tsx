@@ -1,18 +1,15 @@
-import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { NavMenu } from "../navbar.types";
-import { MenuList } from "./MenuList";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { MenuItem } from "./MenuItem";
-import Image from "next/image";
 import InputGroup from "@/components/ui/input-group";
-import ResTopNavbar from "./ResTopNavbar";
+import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
+import type { NavMenu } from "../navbar.types";
 import CartBtn from "./CartBtn";
+import { MenuItem } from "./MenuItem";
+import { MenuList } from "./MenuList";
+import ResTopNavbar from "./ResTopNavbar";
 
 const data: NavMenu = [
   {
@@ -79,10 +76,7 @@ const TopNavbar = () => {
           </div>
           <Link
             href="/"
-            className={cn([
-              integralCF.className,
-              "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
-            ])}
+            className={cn([integralCF.className, "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10"])}
           >
             SHOP.CO
           </Link>
@@ -91,12 +85,8 @@ const TopNavbar = () => {
           <NavigationMenuList>
             {data.map((item) => (
               <React.Fragment key={item.id}>
-                {item.type === "MenuItem" && (
-                  <MenuItem label={item.label} url={item.url} />
-                )}
-                {item.type === "MenuList" && (
-                  <MenuList data={item.children} label={item.label} />
-                )}
+                {item.type === "MenuItem" && <MenuItem label={item.label} url={item.url} />}
+                {item.type === "MenuList" && <MenuList data={item.children} label={item.label} />}
               </React.Fragment>
             ))}
           </NavigationMenuList>

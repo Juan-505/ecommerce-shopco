@@ -1,7 +1,7 @@
-import React from "react";
-import { FooterLinks } from "./footer.types";
 import Link from "next/link";
+import React from "react";
 import { cn } from "@/lib/utils";
+import type { FooterLinks } from "./footer.types";
 
 const footerLinksData: FooterLinks[] = [
   {

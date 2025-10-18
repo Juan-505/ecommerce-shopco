@@ -1,14 +1,11 @@
 "use client";
 
-import {
-  Color,
-  setColorSelection,
-} from "@/lib/features/products/productsSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
-import { RootState } from "@/lib/store";
-import { cn } from "@/lib/utils";
 import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
+import { type Color, setColorSelection } from "@/lib/features/products/productsSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
+import type { RootState } from "@/lib/store";
+import { cn } from "@/lib/utils";
 
 const colorsData: Color[] = [
   {
@@ -26,16 +23,12 @@ const colorsData: Color[] = [
 ];
 
 const ColorSelection = () => {
-  const { colorSelection } = useAppSelector(
-    (state: RootState) => state.products
-  );
+  const { colorSelection } = useAppSelector((state: RootState) => state.products);
   const dispatch = useAppDispatch();
 
   return (
     <div className="flex flex-col">
-      <span className="text-sm sm:text-base text-black/60 mb-4">
-        Select Colors
-      </span>
+      <span className="text-sm sm:text-base text-black/60 mb-4">Select Colors</span>
       <div className="flex items-center flex-wrap space-x-3 sm:space-x-4">
         {colorsData.map((color, index) => (
           <button

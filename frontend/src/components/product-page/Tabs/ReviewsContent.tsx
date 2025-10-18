@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
+import { reviewsData } from "@/app/page";
+import ReviewCard from "@/components/common/ReviewCard";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -7,18 +10,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import ReviewCard from "@/components/common/ReviewCard";
-import { reviewsData } from "@/app/page";
-import Link from "next/link";
 
 const ReviewsContent = () => {
   return (
     <section>
       <div className="flex items-center justify-between flex-col sm:flex-row mb-5 sm:mb-6">
         <div className="flex items-center mb-4 sm:mb-0">
-          <h3 className="text-xl sm:text-2xl font-bold text-black mr-2">
-            All Reviews
-          </h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-black mr-2">All Reviews</h3>
           <span className="text-sm sm:text-base text-black/60">(451)</span>
         </div>
         <div className="flex items-center space-x-2.5">

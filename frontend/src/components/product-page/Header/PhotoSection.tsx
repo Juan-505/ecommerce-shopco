@@ -1,8 +1,8 @@
 "use client";
 
-import { Product } from "@/types/product.types";
 import Image from "next/image";
 import React, { useState } from "react";
+import type { Product } from "@/types/product.types";
 
 const PhotoSection = ({ data }: { data: Product }) => {
   const [selected, setSelected] = useState<string>(data.srcUrl);

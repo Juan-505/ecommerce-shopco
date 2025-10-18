@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  KeyframeOptions,
-  animate,
-  useInView,
-  useIsomorphicLayoutEffect,
-} from "framer-motion";
+import { animate, type KeyframeOptions, useInView, useIsomorphicLayoutEffect } from "framer-motion";
 import { useRef } from "react";
 
 type AnimatedCounterProps = {
@@ -14,11 +9,7 @@ type AnimatedCounterProps = {
   animationOptions?: KeyframeOptions;
 };
 
-const AnimatedCounter = ({
-  from,
-  to,
-  animationOptions,
-}: AnimatedCounterProps) => {
+const AnimatedCounter = ({ from, to, animationOptions }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
 

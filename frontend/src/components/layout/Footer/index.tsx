@@ -1,13 +1,13 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
-import React from "react";
-import { PaymentBadge, SocialNetworks } from "./footer.types";
-import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import Link from "next/link";
-import LinksSection from "./LinksSection";
-import Image from "next/image";
-import NewsLetterSection from "./NewsLetterSection";
+import type { PaymentBadge, SocialNetworks } from "./footer.types";
 import LayoutSpacing from "./LayoutSpacing";
+import LinksSection from "./LinksSection";
+import NewsLetterSection from "./NewsLetterSection";
 
 const socialsData: SocialNetworks[] = [
   {
@@ -68,17 +68,12 @@ const Footer = () => {
         <div className="max-w-frame mx-auto">
           <nav className="lg:grid lg:grid-cols-12 mb-8">
             <div className="flex flex-col lg:col-span-3 lg:max-w-[248px]">
-              <h1
-                className={cn([
-                  integralCF.className,
-                  "text-[28px] lg:text-[32px] mb-6",
-                ])}
-              >
+              <h1 className={cn([integralCF.className, "text-[28px] lg:text-[32px] mb-6"])}>
                 SHOP.CO
               </h1>
               <p className="text-black/60 text-sm mb-9">
-                We have clothes that suits your style and which you’re proud to
-                wear. From women to men.
+                We have clothes that suits your style and which you’re proud to wear. From women to
+                men.
               </p>
               <div className="flex items-center">
                 {socialsData.map((social) => (
@@ -104,18 +99,12 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-2">
             <p className="text-sm text-center sm:text-left text-black/60 mb-4 sm:mb-0 sm:mr-1">
               Shop.co © Made by{" "}
-              <Link
-                href="https://github.com/mohammadoftadeh"
-                className="text-black font-medium"
-              >
+              <Link href="https://github.com/mohammadoftadeh" className="text-black font-medium">
                 Mohammad Oftadeh
               </Link>
               {", "}
               Designed by{" "}
-              <Link
-                href="https://www.figma.com/@hamzauix"
-                className="text-black font-medium"
-              >
+              <Link href="https://www.figma.com/@hamzauix" className="text-black font-medium">
                 Hamza Naeem
               </Link>
             </p>

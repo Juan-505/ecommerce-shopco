@@ -8,7 +8,10 @@
     "start": "next start",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",
@@ -49,8 +52,7 @@
     "husky": "^9.1.7",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5",
-    "ultracite": "5.6.4"
+    "typescript": "^5"
   },
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
 }

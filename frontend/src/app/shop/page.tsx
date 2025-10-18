@@ -1,17 +1,8 @@
-import BreadcrumbShop from "@/components/shop-page/BreadcrumbShop";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import MobileFilters from "@/components/shop-page/filters/MobileFilters";
-import Filters from "@/components/shop-page/filters";
 import { FiSliders } from "react-icons/fi";
-import { newArrivalsData, relatedProductData, topSellingData } from "../page";
 import ProductCard from "@/components/common/ProductCard";
+import BreadcrumbShop from "@/components/shop-page/BreadcrumbShop";
+import Filters from "@/components/shop-page/filters";
+import MobileFilters from "@/components/shop-page/filters/MobileFilters";
 import {
   Pagination,
   PaginationContent,
@@ -21,6 +12,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { newArrivalsData, relatedProductData, topSellingData } from "../page";
 
 export default function ShopPage() {
   return (
@@ -75,27 +74,17 @@ export default function ShopPage() {
               <PaginationPrevious href="#" className="border border-black/10" />
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                    isActive
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm" isActive>
                     1
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm">
                     2
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem className="hidden lg:block">
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm">
                     3
                   </PaginationLink>
                 </PaginationItem>
@@ -103,26 +92,17 @@ export default function ShopPage() {
                   <PaginationEllipsis className="text-black/50 font-medium text-sm" />
                 </PaginationItem>
                 <PaginationItem className="hidden lg:block">
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm">
                     8
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem className="hidden sm:block">
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm">
                     9
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink
-                    href="#"
-                    className="text-black/50 font-medium text-sm"
-                  >
+                  <PaginationLink href="#" className="text-black/50 font-medium text-sm">
                     10
                   </PaginationLink>
                 </PaginationItem>

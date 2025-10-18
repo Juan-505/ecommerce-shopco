@@ -35,9 +35,7 @@ const ProductDetails = () => {
             </p>
           </div>
           <div className="col-span-2 py-3 lg:py-4 border-b">
-            <p className="text-sm w-full leading-7 text-neutral-800 font-medium">
-              {item.value}
-            </p>
+            <p className="text-sm w-full leading-7 text-neutral-800 font-medium">{item.value}</p>
           </div>
         </div>
       ))}

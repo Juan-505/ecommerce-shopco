@@ -1,4 +1,5 @@
 import React from "react";
+import { FiSliders } from "react-icons/fi";
 import {
   Drawer,
   DrawerClose,
@@ -9,7 +10,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { FiSliders } from "react-icons/fi";
 import Filters from ".";
 
 const MobileFilters = () => {

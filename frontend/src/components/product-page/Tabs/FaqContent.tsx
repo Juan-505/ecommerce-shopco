@@ -39,8 +39,7 @@ const faqsData: FaqItem[] = [
   },
   {
     question: "What is the return policy for the t-shirt?",
-    answer:
-      "Outline the return window, conditions, and refund or exchange procedures.",
+    answer: "Outline the return window, conditions, and refund or exchange procedures.",
   },
 ];
 
@@ -53,9 +52,7 @@ const FaqContent = () => {
       <Accordion type="single" collapsible>
         {faqsData.map((faq, idx) => (
           <AccordionItem key={idx} value={`item-${idx + 1}`}>
-            <AccordionTrigger className="text-left">
-              {faq.question}
-            </AccordionTrigger>
+            <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
             <AccordionContent>{faq.answer}</AccordionContent>
           </AccordionItem>
         ))}

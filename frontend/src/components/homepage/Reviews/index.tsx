@@ -1,21 +1,21 @@
 "use client";
 
-import React from "react";
 import * as motion from "framer-motion/client";
-import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import React from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { useIsClient, useMediaQuery } from "usehooks-ts";
+import ReviewCard from "@/components/common/ReviewCard";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import { useIsClient, useMediaQuery } from "usehooks-ts";
-import ReviewCard from "@/components/common/ReviewCard";
-import { Review } from "@/types/review.types";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
+import type { Review } from "@/types/review.types";
 
 type ReviewsProps = { data: Review[] };
 
@@ -81,10 +81,7 @@ const Reviews = ({ data }: ReviewsProps) => {
           </div>
           <CarouselContent>
             {data.map((review, index) => (
-              <CarouselItem
-                key={review.id}
-                className="w-full max-w-[358px] sm:max-w-[400px] pl-5"
-              >
+              <CarouselItem key={review.id} className="w-full max-w-[358px] sm:max-w-[400px] pl-5">
                 <ReviewCard
                   className="h-full"
                   data={review}
@@ -96,24 +93,17 @@ const Reviews = ({ data }: ReviewsProps) => {
                             ? (current + 1 === count
                                 ? 0
                                 : current + 1 > count
-                                ? 1
-                                : current + 1) === index &&
-                              "backdrop-blur-[2px]"
-                            : (current === count ? 0 : current) === index &&
-                              "backdrop-blur-[2px]",
+                                  ? 1
+                                  : current + 1) === index && "backdrop-blur-[2px]"
+                            : (current === count ? 0 : current) === index && "backdrop-blur-[2px]",
                           isDesktop
                             ? (current === 1
                                 ? count - 2
                                 : current === 2
-                                ? count - 1
-                                : current - 3) === index &&
-                              "backdrop-blur-[2px]"
-                            : (current === 1
-                                ? count - 1
-                                : current === 2
-                                ? 0
-                                : current - 2) === index &&
-                              "backdrop-blur-[2px]",
+                                  ? count - 1
+                                  : current - 3) === index && "backdrop-blur-[2px]"
+                            : (current === 1 ? count - 1 : current === 2 ? 0 : current - 2) ===
+                                index && "backdrop-blur-[2px]",
                           "absolute bg-white/10 right-0 top-0 h-full w-full z-10",
                         ])}
                       />
