@@ -1,12 +1,12 @@
 package shopco.backend.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDateTime;
+import shopco.backend.enums.OrderStatus;
 
 @Entity
 @Table(name = "order_status_history")
