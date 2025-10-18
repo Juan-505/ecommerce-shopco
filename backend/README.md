@@ -156,11 +156,94 @@ spring.web.cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
 
 ## 🧪 Testing
 
-Run tests using Maven:
+### Running Tests
+
+Run all tests using Maven:
 
 ```bash
+# Run all tests
 ./mvnw test
+
+# Run tests with coverage report
+./mvnw test jacoco:report
+
+# Run specific test class
+./mvnw test -Dtest=UserControllerTest
+
+# Run tests in specific package
+./mvnw test -Dtest="shopco.backend.controller.*"
 ```
+
+### Test Structure
+
+The test suite includes:
+
+#### **Unit Tests**
+
+- **Controller Tests**: Test REST endpoints with mocked services
+- **Service Tests**: Test business logic with mocked repositories
+- **Repository Tests**: Test data access layer (if needed)
+
+#### **Integration Tests**
+
+- **Full Stack Tests**: Test complete request-response cycle
+- **Database Tests**: Test with real H2 in-memory database
+- **API Tests**: Test actual HTTP requests and responses
+
+### Test Categories
+
+| Test Type         | Location                                    | Purpose                                   |
+| ----------------- | ------------------------------------------- | ----------------------------------------- |
+| Unit Tests        | `src/test/java/shopco/backend/controller/`  | Test controllers with mocked dependencies |
+| Unit Tests        | `src/test/java/shopco/backend/service/`     | Test service layer business logic         |
+| Integration Tests | `src/test/java/shopco/backend/integration/` | Test full application flow                |
+
+### Test Configuration
+
+Tests use H2 in-memory database with the following configuration:
+
+```properties
+# Test database
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.test.database.replace=none
+```
+
+### Running Specific Test Types
+
+```bash
+# Run only unit tests
+./mvnw test -Dtest="*Test"
+
+# Run only integration tests
+./mvnw test -Dtest="*IntegrationTest"
+
+# Run controller tests only
+./mvnw test -Dtest="*ControllerTest"
+
+# Run service tests only
+./mvnw test -Dtest="*ServiceTest"
+```
+
+### Test Coverage
+
+The project includes comprehensive test coverage for:
+
+- ✅ **User Management**: CRUD operations, role management, banning
+- ✅ **Product Management**: CRUD operations, status changes, search
+- ✅ **API Endpoints**: All REST endpoints with various scenarios
+- ✅ **Error Handling**: Exception scenarios and edge cases
+- ✅ **Database Operations**: Create, read, update, delete operations
+- ✅ **Validation**: Input validation and business rules
+
+### Test Data
+
+Tests use:
+
+- **H2 In-Memory Database**: Fast, isolated test environment
+- **MockMvc**: For testing HTTP endpoints
+- **@Transactional**: Automatic rollback after each test
+- **Test Fixtures**: Reusable test data setup
 
 ## 📝 Development Notes
 
