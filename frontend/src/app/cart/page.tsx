@@ -1,10 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
-import { FaArrowRight } from "react-icons/fa6";
-import { MdOutlineLocalOffer } from "react-icons/md";
-import { TbBasketExclamation } from "react-icons/tb";
 import BreadcrumbCart from "@/components/cart-page/BreadcrumbCart";
 import ProductCard from "@/components/cart-page/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -13,10 +8,15 @@ import { useAppSelector } from "@/lib/hooks/redux";
 import type { RootState } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
+import Link from "next/link";
+import React from "react";
+import { FaArrowRight } from "react-icons/fa6";
+import { MdOutlineLocalOffer } from "react-icons/md";
+import { TbBasketExclamation } from "react-icons/tb";
 
 export default function CartPage() {
   const { cart, totalPrice, adjustedTotalPrice } = useAppSelector(
-    (state: RootState) => state.carts,
+    (state: RootState) => state.carts
   );
 
   return (
@@ -38,12 +38,16 @@ export default function CartPage() {
                 {cart?.items.map((product, idx, arr) => (
                   <React.Fragment key={idx}>
                     <ProductCard data={product} />
-                    {arr.length - 1 !== idx && <hr className="border-t-black/10" />}
+                    {arr.length - 1 !== idx && (
+                      <hr className="border-t-black/10" />
+                    )}
                   </React.Fragment>
                 ))}
               </div>
               <div className="w-full lg:max-w-[505px] p-5 md:px-6 flex-col space-y-4 md:space-y-6 rounded-[20px] border border-black/10">
-                <h6 className="text-xl md:text-2xl font-bold text-black">Order Summary</h6>
+                <h6 className="text-xl md:text-2xl font-bold text-black">
+                  Order Summary
+                </h6>
                 <div className="flex flex-col space-y-5">
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">Subtotal</span>
@@ -52,7 +56,9 @@ export default function CartPage() {
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">
                       Discount (-
-                      {Math.round(((totalPrice - adjustedTotalPrice) / totalPrice) * 100)}
+                      {Math.round(
+                        ((totalPrice - adjustedTotalPrice) / totalPrice) * 100
+                      )}
                       %)
                     </span>
                     <span className="md:text-xl font-bold text-red-600">
@@ -60,7 +66,9 @@ export default function CartPage() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="md:text-xl text-black/60">Delivery Fee</span>
+                    <span className="md:text-xl text-black/60">
+                      Delivery Fee
+                    </span>
                     <span className="md:text-xl font-bold">Free</span>
                   </div>
                   <hr className="border-t-black/10" />
