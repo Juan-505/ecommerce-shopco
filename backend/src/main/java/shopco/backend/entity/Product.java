@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import shopco.backend.enums.ProductStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -81,8 +82,3 @@ public class Product {
     private List<ProductTag> tags;
 }
 
-enum ProductStatus {
-    DRAFT,
-    PUBLISHED,
-    ARCHIVED
-}

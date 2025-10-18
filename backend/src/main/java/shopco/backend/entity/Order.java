@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import shopco.backend.enums.OrderStatus;
+import shopco.backend.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -85,21 +87,3 @@ public class Order {
     private List<OrderStatusHistory> statusHistory;
 }
 
-enum PaymentStatus {
-    PENDING,
-    PAID,
-    FAILED,
-    REFUNDED,
-    PARTIALLY_REFUNDED
-}
-
-enum OrderStatus {
-    PENDING,
-    CONFIRMED,
-    PROCESSING,
-    SHIPPED,
-    DELIVERED,
-    CANCELLED,
-    RETURNED,
-    REFUNDED
-}

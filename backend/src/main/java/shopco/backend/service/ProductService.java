@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shopco.backend.entity.Product;
-import shopco.backend.entity.ProductStatus;
+import shopco.backend.enums.ProductStatus;
 import shopco.backend.repository.ProductRepository;
 
 import java.time.LocalDateTime;

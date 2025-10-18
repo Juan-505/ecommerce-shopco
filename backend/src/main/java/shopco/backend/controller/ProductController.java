@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shopco.backend.entity.Product;
-import shopco.backend.entity.ProductStatus;
+import shopco.backend.enums.ProductStatus;
 import shopco.backend.service.ProductService;
 
 import java.util.List;

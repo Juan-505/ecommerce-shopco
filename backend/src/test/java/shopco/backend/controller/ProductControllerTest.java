@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import shopco.backend.entity.Product;
-import shopco.backend.entity.ProductStatus;
+import shopco.backend.enums.ProductStatus;
 import shopco.backend.service.ProductService;
 
 import java.math.BigDecimal;

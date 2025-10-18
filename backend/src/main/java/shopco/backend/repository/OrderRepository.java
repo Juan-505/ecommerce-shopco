@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import shopco.backend.entity.Order;
-import shopco.backend.entity.OrderStatus;
-import shopco.backend.entity.PaymentStatus;
+import shopco.backend.enums.OrderStatus;
+import shopco.backend.enums.PaymentStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;

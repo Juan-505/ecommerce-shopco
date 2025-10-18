@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import shopco.backend.enums.ReviewStatus;
 
 import java.time.LocalDateTime;
 
@@ -56,8 +57,3 @@ public class Review {
     private LocalDateTime createdAt;
 }
 
-enum ReviewStatus {
-    PENDING,
-    APPROVED,
-    REJECTED
-}
