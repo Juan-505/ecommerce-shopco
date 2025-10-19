@@ -1,10 +1,10 @@
-import type { Metadata, Viewport } from "next";
-import "@/styles/globals.css";
-import HolyLoader from "holy-loader";
 import TopBanner from "@/components/layout/Banner/TopBanner";
 import Footer from "@/components/layout/Footer";
 import TopNavbar from "@/components/layout/Navbar/TopNavbar";
 import { satoshi } from "@/styles/fonts";
+import "@/styles/globals.css";
+import HolyLoader from "holy-loader";
+import type { Metadata, Viewport } from "next";
 import Providers from "./providers";
 
 export const metadata: Metadata = {

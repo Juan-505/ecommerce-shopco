@@ -1,0 +1,144 @@
+"use client";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import Link from "next/link";
+
+interface UserAccountDropdownProps {
+  isLoggedIn?: boolean;
+}
+
+const UserAccountDropdown = ({
+  isLoggedIn = false,
+}: UserAccountDropdownProps) => {
+  if (!isLoggedIn) {
+    return (
+      <div className="flex items-center space-x-1 sm:space-x-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="hidden sm:inline-flex"
+        >
+          <Link href="/signin">Sign In</Link>
+        </Button>
+        <Button size="sm" asChild className="text-xs sm:text-sm">
+          <Link href="/signup">Sign Up</Link>
+        </Button>
+        {/* Mobile fallback - chỉ hiển thị icon user */}
+        <Button variant="ghost" size="icon" asChild className="sm:hidden">
+          <Link href="/signin">
+            <Image
+              priority
+              src="/icons/user.svg"
+              height={20}
+              width={20}
+              alt="Sign in"
+              className="h-5 w-5"
+            />
+          </Link>
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          className="relative h-8 w-8 rounded-full p-0 transition-all duration-200  hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          <Avatar className="h-8 w-8">
+            <AvatarImage src="/placeholder-avatar.jpg" alt="User avatar" />
+            <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
+              JD
+            </AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">John Doe</p>
+            <p className="text-xs leading-none text-muted-foreground">
+              john.doe@example.com
+            </p>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link href="/profile" className="flex items-center cursor-pointer">
+            <Image
+              src="/icons/user.svg"
+              alt="Profile"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            Profile
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/orders" className="flex items-center cursor-pointer">
+            <Image
+              src="/icons/order.svg"
+              alt="Orders"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            Orders
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/wishlist" className="flex items-center cursor-pointer">
+            <Image
+              src="/icons/heart.svg"
+              alt="Wishlist"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            Wishlist
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link href="/settings" className="flex items-center cursor-pointer">
+            <Image
+              src="/icons/settings.svg"
+              alt="Settings"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            Settings
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50 cursor-pointer">
+          <Image
+            src="/icons/logout.svg"
+            alt="Logout"
+            width={16}
+            height={16}
+            className="mr-2"
+          />
+          Logout
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+export default UserAccountDropdown;

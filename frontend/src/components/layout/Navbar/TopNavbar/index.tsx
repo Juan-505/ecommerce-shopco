@@ -1,15 +1,19 @@
+import InputGroup from "@/components/ui/input-group";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import InputGroup from "@/components/ui/input-group";
-import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
 import type { NavMenu } from "../navbar.types";
 import CartBtn from "./CartBtn";
 import { MenuItem } from "./MenuItem";
 import { MenuList } from "./MenuList";
 import ResTopNavbar from "./ResTopNavbar";
+import UserAccountDropdown from "./UserAccountDropdown";
 
 const data: NavMenu = [
   {
@@ -76,7 +80,10 @@ const TopNavbar = () => {
           </div>
           <Link
             href="/"
-            className={cn([integralCF.className, "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10"])}
+            className={cn([
+              integralCF.className,
+              "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
+            ])}
           >
             SHOP.CO
           </Link>
@@ -85,8 +92,12 @@ const TopNavbar = () => {
           <NavigationMenuList>
             {data.map((item) => (
               <React.Fragment key={item.id}>
-                {item.type === "MenuItem" && <MenuItem label={item.label} url={item.url} />}
-                {item.type === "MenuList" && <MenuList data={item.children} label={item.label} />}
+                {item.type === "MenuItem" && (
+                  <MenuItem label={item.label} url={item.url} />
+                )}
+                {item.type === "MenuList" && (
+                  <MenuList data={item.children} label={item.label} />
+                )}
               </React.Fragment>
             ))}
           </NavigationMenuList>
@@ -109,28 +120,22 @@ const TopNavbar = () => {
             className="bg-transparent placeholder:text-black/40"
           />
         </InputGroup>
-        <div className="flex items-center">
-          <Link href="/search" className="block md:hidden mr-[14px] p-1">
+        <div className="flex items-center space-x-2">
+          <Link
+            href="/search"
+            className="block md:hidden p-1 transition-all duration-200 hover:scale-105 hover:opacity-80"
+          >
             <Image
               priority
               src="/icons/search-black.svg"
               height={100}
               width={100}
-              alt="search"
+              alt="Search products"
               className="max-w-[22px] max-h-[22px]"
             />
           </Link>
           <CartBtn />
-          <Link href="/#signin" className="p-1">
-            <Image
-              priority
-              src="/icons/user.svg"
-              height={100}
-              width={100}
-              alt="user"
-              className="max-w-[22px] max-h-[22px]"
-            />
-          </Link>
+          <UserAccountDropdown isLoggedIn={false} />
         </div>
       </div>
     </nav>
