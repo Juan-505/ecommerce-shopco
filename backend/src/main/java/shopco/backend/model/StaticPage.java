@@ -1,39 +1,40 @@
-package shopco.backend.entity;
+package shopco.backend.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Entity
-@Table(name = "brand")
+@Table(name = "static_page")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brand {
+public class StaticPage {
     
     @Id
     private String id;
     
     @Column(nullable = false)
-    private String name;
+    private String title;
     
     @Column(nullable = false, unique = true)
     private String slug;
     
-    @Column(columnDefinition = "TEXT")
-    private String description;
-    
-    @Column(name = "logo_url")
-    private String logoUrl;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String content;
     
     @Column(nullable = false)
     private Boolean active = true;
+    
+    @Column(name = "seo_title")
+    private String seoTitle;
+    
+    @Column(name = "seo_desc")
+    private String seoDesc;
     
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -42,8 +43,4 @@ public class Brand {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-    
-    // Relationships
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Product> products;
 }

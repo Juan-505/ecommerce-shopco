@@ -1,10 +1,4 @@
-package shopco.backend.entity;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.hibernate.annotations.CreationTimestamp;
+package shopco.backend.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,9 +9,13 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import shopco.backend.enums.CouponType;
 
 @Entity

@@ -1,44 +1,37 @@
-package shopco.backend.entity;
+package shopco.backend.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "cart")
+@Table(name = "wishlist_item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
+public class WishlistItem {
     
     @Id
     private String id;
     
-    @Column(name = "user_id", unique = true)
+    @Column(name = "user_id", nullable = false)
     private String userId;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
     
-    @Column(name = "session_id", unique = true)
-    private String sessionId;
+    @Column(name = "product_id", nullable = false)
+    private String productId;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
     
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-    
-    @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
-    
-    // Relationships
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CartItem> items;
 }
