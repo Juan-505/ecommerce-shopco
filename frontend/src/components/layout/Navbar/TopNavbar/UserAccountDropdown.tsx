@@ -10,15 +10,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { User } from "@/types/user.types";
 import Image from "next/image";
 import Link from "next/link";
 
 interface UserAccountDropdownProps {
   isLoggedIn?: boolean;
+  user: User | undefined;
 }
 
 const UserAccountDropdown = ({
   isLoggedIn = false,
+  user,
 }: UserAccountDropdownProps) => {
   if (!isLoggedIn) {
     return (
@@ -54,14 +57,14 @@ const UserAccountDropdown = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="relative h-8 w-8 rounded-full p-0 transition-all duration-200  hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-        >
+        <Button variant="ghost" size="icon" className="ml-2">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/placeholder-avatar.jpg" alt="User avatar" />
+            <AvatarImage
+              src={user?.image || "/placeholder-avatar.jpg"}
+              alt="User avatar"
+            />
             <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
-              JD
+              {user?.name?.charAt(0)}
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -69,9 +72,9 @@ const UserAccountDropdown = ({
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">John Doe</p>
+            <p className="text-sm font-medium leading-none">{user?.name}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              john.doe@example.com
+              {user?.email}
             </p>
           </div>
         </DropdownMenuLabel>

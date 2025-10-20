@@ -3,8 +3,10 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { auth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -70,7 +72,11 @@ const data: NavMenu = [
   },
 ];
 
-const TopNavbar = () => {
+const TopNavbar = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <nav className="sticky top-0 bg-white z-20">
       <div className="flex relative max-w-frame mx-auto items-center justify-between md:justify-start py-5 md:py-6 px-4 xl:px-0">
@@ -135,7 +141,10 @@ const TopNavbar = () => {
             />
           </Link>
           <CartBtn />
-          <UserAccountDropdown isLoggedIn={false} />
+          <UserAccountDropdown
+            isLoggedIn={!!session?.user?.id}
+            user={session?.user}
+          />
         </div>
       </div>
     </nav>

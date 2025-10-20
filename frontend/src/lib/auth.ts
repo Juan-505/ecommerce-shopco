@@ -80,7 +80,7 @@ export const auth = betterAuth({
     nextCookies(),
     admin({
       //todo add admin user ids
-      adminUserIds: [""],
+      adminUserIds: ["fLN6DoGcLUWiYOWuLQgktIrVD5euLpZk"],
     }),
     openAPI(),
     haveIBeenPwned({
