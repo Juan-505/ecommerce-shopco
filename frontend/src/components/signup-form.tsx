@@ -2,6 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Form,
   FormControl,
   FormField,
@@ -16,6 +23,7 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -30,6 +38,8 @@ const signupSchema = z.object({
 
 export function SignupForm({ className, ...props }: SignupFormProps) {
   const router = useRouter();
+  const [showVerificationDialog, setShowVerificationDialog] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -49,8 +59,9 @@ export function SignupForm({ className, ...props }: SignupFormProps) {
       if (signUpError) {
         toast.error(signUpError.message || "Failed to sign up");
       } else {
-        toast.success("Account created successfully");
-        router.push("/sign-in");
+        setUserEmail(values.email);
+        setShowVerificationDialog(true);
+        form.reset();
       }
     } catch (_err) {
       toast.error("Failed to sign up");
@@ -140,22 +151,33 @@ export function SignupForm({ className, ...props }: SignupFormProps) {
         </form>
       </Form>
 
-      <p className="text-muted-foreground text-sm">
-        Already have an account?{" "}
-        <Link
-          href="/sign-in"
-          className="text-primary underline underline-offset-4"
-        >
-          Sign in
-        </Link>
-      </p>
+      <div className="space-y-2">
+        <p className="text-sm text-muted-foreground">
+          Already have an account?{" "}
+          <Link
+            href="/sign-in"
+            className="text-primary underline underline-offset-4"
+          >
+            Sign in
+          </Link>
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Forgot your password?{" "}
+          <Link
+            href="/reset-password"
+            className="text-primary underline underline-offset-4"
+          >
+            Reset it here
+          </Link>
+        </p>
+      </div>
 
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <Separator className="w-full" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">
+          <span className="bg-background px-2 text-muted-foreground">
             Or continue with
           </span>
         </div>
@@ -187,6 +209,39 @@ export function SignupForm({ className, ...props }: SignupFormProps) {
           Discord
         </Button>
       </div>
+
+      <Dialog
+        open={showVerificationDialog}
+        onOpenChange={setShowVerificationDialog}
+      >
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Check your email</DialogTitle>
+            <DialogDescription>
+              We've sent a verification link to <strong>{userEmail}</strong>.
+              Please check your email and click the link to verify your account.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col space-y-2">
+            <Button
+              onClick={() => setShowVerificationDialog(false)}
+              className="w-full"
+            >
+              Got it
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShowVerificationDialog(false);
+                router.push("/sign-in");
+              }}
+              className="w-full"
+            >
+              Go to sign in
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

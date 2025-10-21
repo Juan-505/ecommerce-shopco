@@ -1,4 +1,4 @@
-import LoginForm from "@/components/login-form";
+import ResetPasswordForm from "@/components/reset-password-form";
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 
-export default function SignInPage() {
+export default function ResetPasswordPage() {
   return (
     <main className="grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
       <section className="hidden flex-col justify-between bg-black p-10 text-white lg:flex">
@@ -17,9 +17,12 @@ export default function SignInPage() {
         </div>
         <div className="max-w-md space-y-4">
           <h1 className="text-4xl font-medium leading-tight xl:text-5xl">
-            Elevate your everyday style
+            Reset your password
           </h1>
-          <p>Premium brands, fast shipping, and easy returns.</p>
+          <p>
+            Enter your email address and we'll send you a link to reset your
+            password.
+          </p>
         </div>
         <div className="text-xs text-muted-foreground">
           © 2025 ShopCo. All rights reserved.
@@ -30,13 +33,13 @@ export default function SignInPage() {
         <div className="w-full max-w-md">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Sign in</CardTitle>
+              <CardTitle className="text-2xl">Reset Password</CardTitle>
               <CardDescription>
-                Welcome back. Please sign in to continue.
+                Enter your email address and we'll send you a reset link.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <LoginForm />
+              <ResetPasswordForm />
             </CardContent>
           </Card>
         </div>

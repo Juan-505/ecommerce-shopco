@@ -1,6 +1,6 @@
 import ResetPasswordEmail from "@/components/email/reset-password";
 import VerificationEmail from "@/components/email/verification-email";
-import { resend } from "./resend";
+import { resend } from "@/lib/resend";
 
 export interface EmailUser {
   name: string;
@@ -13,16 +13,16 @@ export class EmailService {
    */
   static async sendResetPasswordEmail(user: EmailUser, resetUrl: string) {
     const link = new URL(resetUrl);
-    link.searchParams.set("callbackURL", "/reset-password");
+    link.searchParams.set("callbackURL", "/new-password");
 
     try {
       await resend.emails.send({
         to: [user.email],
-        from: "Axyl Team <onboarding@resend.dev>",
+        from: "ShopCo Team <noreply@shopco.com>",
         subject: "Reset your password",
         react: ResetPasswordEmail({
           userFirstname: user.name,
-          resetPasswordLink: resetUrl,
+          resetPasswordLink: link.toString(),
         }),
       });
     } catch (error) {
@@ -41,7 +41,7 @@ export class EmailService {
     try {
       await resend.emails.send({
         to: [user.email],
-        from: "Axyl Team <onboarding@resend.dev>",
+        from: "ShopCo Team <noreply@shopco.com>",
         subject: "Verify your email",
         react: VerificationEmail({
           userFirstname: user.name,

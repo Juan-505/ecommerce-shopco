@@ -1,11 +1,11 @@
 "use client";
 
 import SpinnerbLoader from "@/components/ui/SpinnerbLoader";
+import { Toaster } from "@/components/ui/sonner";
 import type React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { makeStore } from "../lib/store";
-import { Toaster } from "@/components/ui/toaster";
 
 type Props = {
   children: React.ReactNode;

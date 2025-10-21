@@ -121,12 +121,12 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
               </FormItem>
             )}
           />
-          <div className="flex items-center justify-end gap-4">
+          <div className="flex items-center justify-between gap-4">
             <FormField
               control={form.control}
               name="rememberMe"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center space-y-0 space-x-2">
+                <FormItem className="flex flex-row items-center space-x-2 space-y-0">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
@@ -137,6 +137,12 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
                 </FormItem>
               )}
             />
+            <Link
+              href="/reset-password"
+              className="text-sm text-primary underline underline-offset-4 hover:text-primary/80"
+            >
+              Forgot password?
+            </Link>
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
@@ -144,7 +150,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
         </form>
       </Form>
 
-      <p className="text-muted-foreground text-sm">
+      <p className="text-sm text-muted-foreground">
         Don't have an account?{" "}
         <Link
           href="/sign-up"
@@ -159,7 +165,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
           <Separator className="w-full" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background text-muted-foreground px-2">
+          <span className="bg-background px-2 text-muted-foreground">
             Or continue with
           </span>
         </div>

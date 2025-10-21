@@ -14,6 +14,7 @@ import {
 import { User } from "@/types/user.types";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 interface UserAccountDropdownProps {
   isLoggedIn?: boolean;
@@ -33,14 +34,14 @@ const UserAccountDropdown = ({
           asChild
           className="hidden sm:inline-flex"
         >
-          <Link href="/signin">Sign In</Link>
+          <Link href="/sign-in">Sign In</Link>
         </Button>
         <Button size="sm" asChild className="text-xs sm:text-sm">
-          <Link href="/signup">Sign Up</Link>
+          <Link href="/sign-up">Sign Up</Link>
         </Button>
         {/* Mobile fallback - chỉ hiển thị icon user */}
         <Button variant="ghost" size="icon" asChild className="sm:hidden">
-          <Link href="/signin">
+          <Link href="/sign-in">
             <Image
               priority
               src="/icons/user.svg"
@@ -57,14 +58,14 @@ const UserAccountDropdown = ({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="ml-2">
+      <DropdownMenuTrigger asChild className="ml-4">
+        <Button variant="ghost" size="icon">
           <Avatar className="h-8 w-8">
             <AvatarImage
               src={user?.image || "/placeholder-avatar.jpg"}
               alt="User avatar"
             />
-            <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
+            <AvatarFallback className="bg-primary text-sm font-medium text-primary-foreground">
               {user?.name?.charAt(0)}
             </AvatarFallback>
           </Avatar>
@@ -81,7 +82,7 @@ const UserAccountDropdown = ({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/profile" className="flex items-center cursor-pointer">
+          <Link href="/profile" className="flex cursor-pointer items-center">
             <Image
               src="/icons/user.svg"
               alt="Profile"
@@ -93,7 +94,7 @@ const UserAccountDropdown = ({
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/orders" className="flex items-center cursor-pointer">
+          <Link href="/orders" className="flex cursor-pointer items-center">
             <Image
               src="/icons/order.svg"
               alt="Orders"
@@ -105,7 +106,7 @@ const UserAccountDropdown = ({
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/wishlist" className="flex items-center cursor-pointer">
+          <Link href="/wishlist" className="flex cursor-pointer items-center">
             <Image
               src="/icons/heart.svg"
               alt="Wishlist"
@@ -118,7 +119,7 @@ const UserAccountDropdown = ({
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/settings" className="flex items-center cursor-pointer">
+          <Link href="/settings" className="flex cursor-pointer items-center">
             <Image
               src="/icons/settings.svg"
               alt="Settings"
@@ -133,7 +134,7 @@ const UserAccountDropdown = ({
         <DropdownMenuItem asChild>
           <LogoutButton
             variant="ghost"
-            className="w-full justify-start text-red-600 hover:text-red-600 hover:bg-red-50 p-2 h-auto font-normal"
+            className="h-auto w-full justify-start p-2 font-normal hover:bg-red-50"
           >
             <Image
               src="/icons/logout.svg"

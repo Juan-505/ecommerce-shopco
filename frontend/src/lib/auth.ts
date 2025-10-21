@@ -1,8 +1,8 @@
+import { EmailService } from "@/services/email.service";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { admin, haveIBeenPwned, openAPI } from "better-auth/plugins";
-import { EmailService } from "./email";
 import { prisma } from "./prisma";
 import { assertValue } from "./utils";
 
@@ -17,7 +17,7 @@ export const auth = betterAuth({
     sendResetPassword: async ({ user, url }) => {
       await EmailService.sendResetPasswordEmail(
         { name: user.name, email: user.email },
-        url
+        url,
       );
     },
   },
@@ -28,7 +28,7 @@ export const auth = betterAuth({
     sendVerificationEmail: async ({ user, url }) => {
       await EmailService.sendVerificationEmail(
         { name: user.name, email: user.email },
-        url
+        url,
       );
     },
   },
@@ -36,31 +36,31 @@ export const auth = betterAuth({
     github: {
       clientId: assertValue(
         process.env.GITHUB_CLIENT_ID,
-        "Missing GITHUB_CLIENT_ID"
+        "Missing GITHUB_CLIENT_ID",
       ),
       clientSecret: assertValue(
         process.env.GITHUB_CLIENT_SECRET,
-        "Missing GITHUB_CLIENT_SECRET"
+        "Missing GITHUB_CLIENT_SECRET",
       ),
     },
     discord: {
       clientId: assertValue(
         process.env.DISCORD_CLIENT_ID,
-        "Missing DISCORD_CLIENT_ID"
+        "Missing DISCORD_CLIENT_ID",
       ),
       clientSecret: assertValue(
         process.env.DISCORD_CLIENT_SECRET,
-        "Missing DISCORD_CLIENT_SECRET"
+        "Missing DISCORD_CLIENT_SECRET",
       ),
     },
     google: {
       clientId: assertValue(
         process.env.GOOGLE_CLIENT_ID,
-        "Missing GOOGLE_CLIENT_ID"
+        "Missing GOOGLE_CLIENT_ID",
       ),
       clientSecret: assertValue(
         process.env.GOOGLE_CLIENT_SECRET,
-        "Missing GOOGLE_CLIENT_SECRET"
+        "Missing GOOGLE_CLIENT_SECRET",
       ),
     },
   },
