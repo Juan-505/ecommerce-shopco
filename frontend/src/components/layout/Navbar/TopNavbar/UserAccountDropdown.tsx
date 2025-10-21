@@ -1,5 +1,6 @@
 "use client";
 
+import LogoutButton from "@/components/logout-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -129,15 +130,20 @@ const UserAccountDropdown = ({
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50 cursor-pointer">
-          <Image
-            src="/icons/logout.svg"
-            alt="Logout"
-            width={16}
-            height={16}
-            className="mr-2"
-          />
-          Logout
+        <DropdownMenuItem asChild>
+          <LogoutButton
+            variant="ghost"
+            className="w-full justify-start text-red-600 hover:text-red-600 hover:bg-red-50 p-2 h-auto font-normal"
+          >
+            <Image
+              src="/icons/logout.svg"
+              alt="Logout"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            Logout
+          </LogoutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
